@@ -1,0 +1,2 @@
+X_PATH of each chat ::
+//*[@id="pane-side"]/div[1]/div/div/div
