@@ -39,3 +39,21 @@ def connecting_with_whatsapp():
         logging.info("QR code scanned, You are logged into Whatsapp")
 
     return driver
+
+
+def check_unread_from_these(driver, employee, client):
+    logging.info("Check unread msgs for these called : ")
+
+    allcontacts = driver.find_elements_by_xpath(
+        ''' //*[@id="pane-side"]/div[1]/div/div/div''')
+
+    for each in allcontacts:
+        stringlist = each.text.split("\n")
+        name = stringlist[0]
+        code = name.split()[0]
+
+        if code == employee or code == client:
+            if len(stringlist) > 3:
+                if stringlist[3] != ":" or stringlist[3] != ": ":
+                    driver.save_screenshot(r"/app/screenshots/")
+
