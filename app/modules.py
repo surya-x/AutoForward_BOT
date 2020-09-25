@@ -12,11 +12,12 @@ from datetime import datetime
 import sys
 import os
 import logging
+import openpyxl
 
 
 def connecting_with_whatsapp():
     logging.info("Connecting with whatsapp called : ")
-    print("BOT Is Connecting with Whatsapp\n")
+    print("BOT Is Connecting with Whatsapp\n...")
 
     try:
         options = Options()
@@ -60,10 +61,28 @@ def connecting_with_whatsapp():
     return driver
 
 
+# To give the all the details in "parameter.xlsx"
+def retrieve_file_parameter():
+    logging.info("retrieve file parameter called")
+    try:
+        path = os.path.join(os.getcwd(), "parameters.xlsx")
+        workbook = openpyxl.load_workbook(path)
+        sheet = workbook.worksheets[0]
+
+        number = sheet["A2"].value
+
+        return number
+    except Exception as e:
+        print("\nError : loading data from parameters.xlsx")
+        print(e)
+        logging.error(e)
+        os.system("PAUSE")
+        sys.exit()
+
 # This method is used to type the parameter given to function into search
 # bar of Whatsapp and will open the chat
 def search_bar(driver, parameter):
-    logging.info("search_bar called with parameter " + parameter)
+    logging.info("search_bar called with parameter : " + parameter)
     try:
         search = driver.find_element_by_xpath(
             '''//*[@id="side"]/div[1]/div/label/div/div[2]''')
@@ -161,7 +180,8 @@ def send_img(driver, imgpath):
 
 
 def send_ss(driver, directory, tosend):
-    logging.info("Sending the screenshot to contacts: " + tosend)
+    tosend = str(tosend)
+    logging.info("Sending the screenshot to contacts: " + str(tosend) )
     print("Sending the screenshots to contact listed")
     try:
         search_bar(driver, tosend)
@@ -178,6 +198,8 @@ def send_ss(driver, directory, tosend):
     except Exception as e:
         logging.error("Exception found in send_ss")
         logging.error(e)
+        os.system("PAUSE")
+        sys.exit()
 
 
 def delete_ss(directory):
