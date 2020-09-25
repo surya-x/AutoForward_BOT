@@ -8,8 +8,8 @@ IT WILL START BY RUNNING MAIN.PY
 
 
 Note :- 
+    
     > Make sure you are writing the number/name in parameters.xlsx before running the script.
-
     > If the bot is opening the Chrome window, then please dont minimize, change the shape of the window to run it smoothly. You can still use or do your own work over it.
 
 
@@ -23,3 +23,6 @@ LIBRARY'S USED :-
     6. OS
     7. LOGGING
     8. OPENPYXL
+
+( -- ALL THE LIBRARY'S WILL BE INSTALLED AUTOMATICALLY BY RUNNING
+ "autoforwardbot/app/developer-setup.py" -- )
