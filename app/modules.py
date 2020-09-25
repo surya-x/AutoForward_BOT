@@ -26,7 +26,9 @@ def connecting_with_whatsapp():
         #      r"user-data-dir=C:\Users\chief_surya01\AppData\Local\Google\Chrome\User Data")
         # options.add_argument(
         #      r"user-data-dir=/home/surya/.config/google-chrome")
+
         # driver = webdriver.Chrome(chrome_options=options)
+        # driver = webdriver.Chrome("C:/Users/michael/Downloads/chromedriver_win32/chromedriver.exe")
 
         driver = webdriver.Chrome()
 
