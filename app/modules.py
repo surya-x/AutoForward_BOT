@@ -29,7 +29,7 @@ def connecting_with_whatsapp():
 
         # driver = webdriver.Chrome(chrome_options=options)
         # driver = webdriver.Chrome("C:/Users/michael/Downloads/chromedriver_win32/chromedriver.exe")
-
+        # driver = webdriver.Chrome(r"/home/surya-x/Software/chromedriver")
         driver = webdriver.Chrome()
 
         # print("Please scan the QR code if prompted to login into Whatsapp")
@@ -72,8 +72,9 @@ def retrieve_file_parameter():
         sheet = workbook.worksheets[0]
 
         number = sheet["A2"].value
+        pause_time = sheet["B2"].value
 
-        return number
+        return number, pause_time
     except Exception as e:
         print("\nError : loading data from parameters.xlsx")
         print(e)
